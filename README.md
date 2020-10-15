@@ -10,7 +10,7 @@ $array = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ];
 $counter = new Counter( 5 ); // One
 foreach ( $array as $arr ) {
 	echo $arr;  
-	if ($counter->count() === "finished") return; // Two
+	if ($counter->count() === "finished") die; // Two
 }
 ```
 
