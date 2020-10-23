@@ -20,6 +20,12 @@ interface CounterInterface {
 	 * @return mixed
 	 */
 	public function count( int $amount = 1 );
+
+    /**
+     * Returns the count
+     * @return int
+     */
+	public function get_count(): int;
 }
 
 class Counter implements CounterInterface {
@@ -31,13 +37,18 @@ class Counter implements CounterInterface {
 		$this->count = $count <= 0 ? 0 : $count;
 	}
 
-	public function count( int $amount = 1 ): string {
+	public function count( int $amount = 1 ): bool {
 		if ( $this->count !== 0 && $this->counter < ( $this->count - 1 ) ) {
 			$this->counter += $amount;
 		} else {
-			return 'finished';
+			return true;
 		}
 
-		return "{$this->count}";
+		return false;
 	}
+
+	public function get_count(): int
+    {
+        return $this->count;
+    }
 }
